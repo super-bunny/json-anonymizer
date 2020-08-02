@@ -23,6 +23,7 @@ def read_file(file_path) -> str:
 
 parser = argparse.ArgumentParser(description='CLI to anonymize JSON file')
 parser.add_argument('--version', action='version', version='v0.1.0')
+parser.add_argument('--empty-string', type=bool, const=True, default=False, nargs='?', help='Empty all string')
 parser.add_argument('json_file_path', metavar='json_file', type=str, nargs='?', help='JSON file path')
 
 args = parser.parse_args()
@@ -40,5 +41,5 @@ else:
         sys.exit(1)
     json_content = json.loads(read_file(json_file_path))
 
-anonymized_data = anonymizer.anonymize(json_content)
+anonymized_data = anonymizer.anonymize(json_content, empty_string=args.empty_string)
 print(json.dumps(anonymized_data))
