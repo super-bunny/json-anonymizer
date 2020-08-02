@@ -20,6 +20,7 @@ def read_file(file_path) -> str:
     f.close()
     return file_content
 
+
 parser = argparse.ArgumentParser(description='CLI to anonymize JSON file')
 parser.add_argument('--version', action='version', version='v0.1.0')
 parser.add_argument('json_file_path', metavar='json_file', type=str, nargs='?', help='JSON file path')
